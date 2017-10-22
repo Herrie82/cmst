@@ -19,10 +19,10 @@ conf.path = /etc/dbus-1/system.d
 conf.files = ./system/distro/$$CMST_BUILD_DISTRO/org.cmst.roothelper.conf
 INSTALLS += conf
 
-service.path = /usr/share/dbus-1/system-services
-service.files = ./system/org.cmst.roothelper.service
-service.extra = echo "[D-BUS Service]" > ./system/org.cmst.roothelper.service; echo "Name=org.cmst.roothelper" >> ./system/org.cmst.roothelper.service; echo "Exec=$$CMST_LIB_PATH/cmstroothelper" >> ./system/org.cmst.roothelper.service; echo "User=root" >> ./system/org.cmst.roothelper.service
-INSTALLS += service
+#service.path = /usr/share/dbus-1/system-services
+#service.files = ./system/org.cmst.roothelper.service
+#service.extra = echo "[D-BUS Service]" > ./system/org.cmst.roothelper.service; echo "Name=org.cmst.roothelper" >> ./system/org.cmst.roothelper.service; echo "Exec=$$CMST_LIB_PATH/cmstroothelper" >> ./system/org.cmst.roothelper.service; echo "User=root" >> ./system/org.cmst.roothelper.service
+#INSTALLS += service
 
 # dbus
 DBUS_ADAPTORS		+= ./code/roothelper/org.monkey_business_enterprises.roothelper.xml

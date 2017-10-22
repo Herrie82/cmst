@@ -19,11 +19,11 @@ TRANSLATIONS += ./translations/cmst_fr_FR.ts
 # non-application files which need to be installed
 #
 # documentation (manpage)
-documentation.path = $$CMST_DOC_PATH/man1
-documentation.files = ./misc/manpage/cmst.1.gz
-documentation.CONFIG = no_check_exist
-documentation.extra = gzip --force --keep ./misc/manpage/cmst.1
-INSTALLS += documentation
+#documentation.path = $$CMST_DOC_PATH/man1
+#documentation.files = ./misc/manpage/cmst.1.gz
+#documentation.CONFIG = no_check_exist
+#documentation.extra = gzip --force --keep ./misc/manpage/cmst.1
+#INSTALLS += documentation
 
 # application icons - 
 exists(./images/application/cmst-icon.png) {

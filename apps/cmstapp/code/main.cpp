@@ -58,6 +58,11 @@ int main(int argc, char *argv[])
   QApplication::setApplicationVersion(VERSION);
   QApplication::setOrganizationName(ORG);
   QApplication::setDesktopSettingsAware(true);
+  QStringList rawArgs;
+  for (int i = 0; i < argc; ++i) {
+  rawArgs << QString::fromLocal8Bit(argv[i]);
+  }
+	
   QApplication app(argc, argv);
 
   // make sure only one instance is running
@@ -173,7 +178,8 @@ int main(int argc, char *argv[])
   // and it is not specified, even if we provide a default.  We're supposed to catch errors if we
   // use parse(), but parse.errorText() returns an empty string on this.  Bag the error checking
   // for now.
-  parser.parse(QCoreApplication::arguments() );
+  //parser.parse(QCoreApplication::arguments() );
+  parser.process(rawArgs);
   QStringList sl = parser.unknownOptionNames();
   if (sl.size() > 0 ) parser.showHelp(1);
   if (parser.isSet("help") ) parser.showHelp(1);

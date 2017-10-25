@@ -418,36 +418,12 @@ ControlBox::ControlBox(const QCommandLineParser& parser, QWidget *parent)
 
   // Tray icon - disable it if we specifiy that option on the commandline or in
   // the settings, otherwise set a singleshot timer to create the tray icon.
-  if (parser.isSet("disable-tray-icon") ? true : (b_so && ui.checkBox_disabletrayicon->isChecked()) ) {
-		trayicon = NULL;
+    trayicon = NULL;
     ui.checkBox_hideIcon->setDisabled(true);
     this->updateDisplayWidgets();
     qApp->setQuitOnLastWindowClosed(true); // not running systemtray icon so normal close
     this->showNormal(); // no place to minimize to, so showMaximized
-  } // if
-  else {
-    const short mintrigger = 100; // Minimum time (milliseconds) to wait before starting the tray icon.  We advertise zero, but not really.
-    int timeout = 0;
-    if (parser.isSet("wait-time") ) {
-      bool ok;
-      timeout = parser.value("wait-time").toInt(&ok, 10);
-      if (! ok) timeout = 0;
-    } // if parser set
-    else if (b_so && ui.checkBox_waittime->isChecked() ) {
-      timeout = ui.spinBox_waittime->value();
-    }
-
-    timeout *= 1000;
-    if (timeout < mintrigger) timeout = mintrigger;
-    if (parser.isSet("minimized") ? true : (b_so && ui.checkBox_startminimized->isChecked()) ) {
-      QTimer::singleShot(timeout, this, SLOT(createSystemTrayIcon()) );
-    } // if showMinimized
-    else {
-      this->showNormal();
-      QTimer::singleShot(timeout, this, SLOT(createSystemTrayIcon()) );
-    } // else showNormal
-  } // else
-}
+  }
 
 ////////////////////////////////////////////////// Public Functions //////////////////////////////////
 
